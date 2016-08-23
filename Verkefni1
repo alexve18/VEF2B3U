@@ -1,0 +1,87 @@
+1.Hvað er ECMAScript?
+	er skriftumálið sem notað er í JavaScript
+
+2. Afhverju að nota === fremur en == í JavaScript?
+	X == 5 (true)
+	X == "5" (true) sem sýnir að það == tekur bara töluna á meðan
+
+	X === 5 (true)
+	X === "5" (false) === tekur líka tegundina
+
+3. Hvað kemur út og hvaða type (sjá typeof operator)?
+	a) var result = 5 * “5”;
+		25 því hann reiknar 5 * 5
+	b) var result = 5 + “5”;
+		55 því hann bætir 5 fyrir framan 5
+
+4. Hvað eru margar global breytur í kóðanum?
+	3
+
+5. Hver er munurinn á A og B? Útskýrðu hvað “use strict“ gerir
+	munurinn á milli A og B er bara þetta "use strict"
+	"use strict" lætur það léttar að skrifa "örrugan" Javascript kóða því án það gætir þú lagt saman 5 + "John" og þá fengiru bara error og deyr enn með "use strict" stoppar hann það og gefur þér error
+
+6. Hver er munurinn á null og undefined í notkun?
+	Þú getur bætt við null enn þú getur ekki bætt við undefinded ef þú værir t.d. að gera null + 2 verður það 2 enn undefined + 2 verður NaN
+
+7.  Gerðu kóðann skilvirkari og rökstuddu breytinguna!
+
+Fyrir:
+
+var names = ['George','Ringo','Paul','John'];
+for(var i=0,j=names.length;i<j;i++){
+doSomethingWith(names[i]);
+}
+
+Eftir: (Breytt var hvernig for loopan var skrifuð þar sem þetta er einfaldara í lesning og uppsetningu)
+
+var names = ['George','Ringo','Paul','John'];
+for(i = 0; i < names.length; i++){
+  doSomethingWith(names[i]);
+}
+
+8. Hver er munurinn á for of, forEach og for in lykkju. Komdu með dæmi?
+
+	For of (góð notkun á For of, For of er gott ef þú vilt ákveðið úr breytu/array-i)
+
+	let iterable = new Set([1, 1, 2, 2, 3, 3]);
+
+	for (let value of iterable) {
+	  console.log(value);
+	}
+	// 1
+	// 2
+	// 3
+
+	For in (klassíska for lykkjan)
+
+	var obj = {a:1, b:2, c:3};
+    
+	for (var prop in obj) {
+	  console.log("obj." + prop + " = " + obj[prop]);
+	}
+
+	// Output:
+	// "obj.a = 1"
+	// "obj.b = 2"
+	// "obj.c = 3"
+
+	For each (lélegast, hægvirkast. Mozilla gefur þessu þumal niður)
+
+	var sum = 0;
+	var obj = {prop1: 5, prop2: 13, prop3: 8};
+
+	for each (var item in obj) {
+	  sum += item;
+	}
+
+	console.log(sum); // logs "26", which is 5+13+8
+
+9. Hvað er NaN og afhverju er eftirfarandi false? console.log(NaN == NaN);
+	NaN mun alltaf gefa false þegar það er borið saman því NaN stendur fyrir Not a Number.
+
+10.  Hvað birtist (úttak)? Útskýrðu hversvegna. console.log(null || "user")
+	user birtist því hitt er null, ef null væri "alexander" myndi alexander birtast. milli null og "user" er merkið or sem táknar að annaðhvort skilyrðin verða uppfyllast. ef fyrra uppfyllir skilyrðin þá gleymir hann seinna.
+
+
+
