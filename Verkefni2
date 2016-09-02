@@ -1,0 +1,115 @@
+1. Hér er dæmi um “function decleration” og kall á fallið. Afhverju virkar eftirfarandi kóði í
+JavaScript, útskýrðu? því functions mega vera skilgreind fyrir neðan í Javascript þar sem kóðinn les að hann á að framkvæma function x, þá finnur hann function x til að framkvæma
+
+x();
+function x() {
+ console.log('x');
+}
+
+
+2. Í hvaða röð er kóðinn keyrður í raun eftir að þýðandinn (e. interpreter) er búinn að fá hann til
+sín? Hvað birtir alert(), afhverju? því ýmindaðu að bæði functionin eru spil, hann býr til fyrsta spilið og það er 3, býr svo til seinna og það er 8. svo þegar það er beðið um spil þá tekur hann efsta spilið sem í þessu tilefni er 8 þar sem hún var seinni búin til og því efra spilið
+
+function foo(){
+ function bar() {
+ return 3;
+ }
+ return bar();
+ function bar() {
+ return 8;
+ }
+}
+alert(foo());
+
+3. Í hvaða röð er kóðinn keyrður í raun eftir að þýðandinn (e. interpreter) er búinn að fá hann til
+sín? Hvað birtir alert(), afhverju? Hérna er þetta akkurat öfugt við hitt sýnidæmið, núna býr hann til spilin, setur þau í bunka nema tekur neðsta spilið fyrst.
+
+function foo(){
+ var bar = function() {
+ return 3;
+ };
+ return bar();
+ var bar = function() {
+ return 8;
+ };
+}
+alert(foo());
+
+4. Hægt er búa til fall m.a. með 'function expressions' eða 'function declarations'. Hvort ætti maður
+að nota, afhverju? Til að byrja með finnst mér persónulegra þæginlegra ða nota Function declaration þar sem það er einfaldara að gera enn breytir litlu hvort þú notar lengi sem þú mannst hvernig það virkar sem þú notar og afhverju
+
+
+grunnatriði og málskipan í JavaScript
+
+
+5. Hvað gerist þegar ég gleymi að skilgreina breytu með var? Útskýrðu hvað gerist
+	þegar ekki er skilgreint "var" ef Age væri t.d. inn í function þá væri hægt að kalla á hana utan function-sins, enn með að hafa var þá er hun private innan functions
+
+Age = “30”;
+Console.log(age);
+
+
+6. Útskýrðu hvað eftirfarandi kóði gerir, hvað gera svigarnir? 
+	Svigarnir keyra functionið strax og það er búið til
+
+(function() {
+alert('Hello World');
+})();
+
+
+7. Afhverju virkar eftirfarandi kóðabútur með óskilgreindu breytunni, útskýrðu?
+	Því Javascript er þæginlegt með þennan máta er að þegar honum vantar bara einn hlut, og þú gefur honum þrjá hluti þá skilur hann eftir tvo hluti og gefur þér bara fyrsta til baka. alveg eins þegar þú gefur honum færri enn honum vantaði þá skilar hann bara undefined með
+
+var result = (true || someUndeclaredVariable);
+alert(result); // true
+
+
+8. Útskýrðu hvers vegna úttakið er "“hello world” // vantar sviga viljandi, copiedFunction is a pointer to the hello world function (nafnlausa fallið) that was initially defined" -Gunnar Þórunnarson 2016 https://nam.inna.is/api/Attachment/DownloadFile/106936/442549?student=1
+	copiedFunction bendir á hello world function sem var upphaflega skilgreint
+
+var originalFunction = function () {
+ alert('hello world');
+}
+var copiedFunction = originalFunction; // Hvað gerir þessi setning?
+var originalFunction = function () {
+ alert('goodbye world');
+}
+copiedFunction();
+
+
+9. Útskýrðu úttak:
+
+function power(base, exponent) {
+ if (exponent === undefined)
+ exponent = 2;
+ var result = 1;
+ for (var count = 0; count < exponent; count++)
+ result *= base;
+ return result;
+}
+console.log(power(4)); // Afhverju virkar þetta? því í functioninu segir að ef exponent er ekki skilgreint verður það að tveimum
+console.log(power(4,3,2)); // Hvað verður um gildið 2? gildið 2 er skilið eftir þar sem functionin þarf ekki nema 2 stök.
+
+
+grunnatriði og málskipan í JavaScript
+
+
+10. Hvað er call stack og hvað er heap? // The call stack, the way control flows through functions.
+	When you create a function, that function occupies a block of memory. 
+    Internally, the only reference it has is its location in Javascript's heap. 
+    When you pass a pointer to the function you're passing the pointer to this memory location 
+    and NOT the function's name.
+
+11. Hvað er callback, komdu með lítið dæmi og útskýrðu. Javascript statements eru framkvæmdar línu fyrir línu sem skapar stundum vesen þegar "effects" eru ekki tilbúin enn samt heldur Javascript áfram. Lausnin við því er callback function sem er þegar function er framkvæmd eftir að núverandi "effect" er búið
+
+	$("button").click(function(){
+    $("p").hide("slow", function(){
+        alert("The paragraph is now hidden");
+    });
+	});
+
+12. Hvað þýða eftirfarandi hugtök í JavaScript?
+
+a. Non blocking //útaf Javascript er non blocking data þá stoppar hún aldrei þig að sækja breytur hvaðan sem er úr kóðanum eins og "i" í for loopu
+b. Single thread // Að það er bara einn ormur að vinna sig í gegnum kóðann enn ekki nokkrir á sama tíma á mismunandi stöðum
+c. asynchronous // Þegar þú framkvæmir eitthvað "synchronously" þá bíður þú eftir að það klárist áður enn þú heldur áfram, þegar þú framkvæmir eitthvað "asynchronous" getur þú haldið áfram áður enn það klárast
