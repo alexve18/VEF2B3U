@@ -1,0 +1,57 @@
+
+/*
+ * Vinsamlegast breytið þessu default útliti 
+ */
+ html {
+    size: 100%;
+    background-color: rgb(133, 59, 0);
+ }
+#title {
+    padding-left: 40%;
+    color: white;
+    background-color: rgb(218, 100, 5);
+    box-shadow: 1px 1px 5px rgb(73,37,37);
+    border:1px solid;
+    border-radius:5px;
+    margin-bottom: 10px;
+}
+#quiz {
+    color: white;
+	background-color: rgb(218, 100, 5);
+	box-shadow: 1px 1px 5px rgb(73,37,37);
+	border:1px solid;
+	border-radius:5px; 
+}
+#question {
+    margin-left: 30%;
+}
+.choices {
+    padding: 
+}
+.choice {
+    margin-bottom: 1em;
+    font-weight: bold;
+    padding: 20px;
+    color: white;
+    background: rgb(96,128,178);
+    border-radius: 5px;
+    text-shadow: 0 -1px 0 #000;
+    box-shadow: 0 1px 0 #666;
+
+}
+#next {
+    font-family: 'Titillium Web', sans-serif;
+    display: block;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px 15px;
+    margin: 50px;
+    margin-left: 45px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: rgb(151,40,40);
+    border-radius: 5px; 
+    text-shadow: 0 -1px 0 #000;
+    box-shadow: 0 1px 0 #666;
+    cursor: pointer;
+}
