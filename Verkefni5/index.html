@@ -12,18 +12,27 @@
 
 <body>
 <!-- Það á ekkert JS að vera í html-->
-	<div id="title">
-	<h1>Welcome the This Quiz
+	<div class="quiz">
+	<h1 class="text-center">Welcome the This Quiz</h1>
 	</div>
 	<!-- Hægt er að útfæra það sem er í quiz container með mismunandi tögum; div, form, ul, label osfrv. og ýmist búið til í JS skrá eða útfært hér í html. -->
-	<div id="quiz">
-		<h1 id="question"><!-- Hér á að koma spurning --></h1>
-		<div class="container">
-		<div id="choices" class="row">
+	<div class="container-fluid">
+		<div class="row row-eq-height">
+			<div class="col-xs-12 col-md-3 quiz">
+				<h1 id="numbQuiz" class="text-center"></h1>
+			</div>
+			<div class="col-xs-12 col-md-6 quiz">
+				<h1 id="question" class="text-center"><!-- Hér á að koma spurning --></h1>
+			</div>
+			<div class="col-xs-12 col-md-3 quiz">
+				<h1 id="Score" class="text-center"></h1>
+			</div>
+			<div class="container col-xs-12 quiz">
+				<div id="choices" class="row col-xs-12">
 
+				</div>
+			</div>
 		</div>
-		</div>
-		<button id="next">Next</button>	
 	</div>
 
 <script type="text/javascript" src="quiz.js"></script>
