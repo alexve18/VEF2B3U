@@ -96,49 +96,42 @@ function CheckAnswer(e) {
 }
 
 function NextQuestion(e) {
-	if (guessed == true) {
-		if((Counter + 1) == Quizzes.length) {
-			for (var i = 0; i < Quizzes[Counter].choices.length; i++) {
-			var thischoice = document.getElementById("choice" + i);
-			var thischoiceparent = thischoice.parentNode;
-			thischoiceparent.removeChild(thischoice);
-			}
-			var Headline = document.getElementById('question');
-			if(PlayerScore == (Counter + 1)){
-				Headline.textContent = "Vel gert! svaraðir öllu réttu!";
-			}
-			else if(PlayerScore	== 0)
-			{
-				Headline.textContent = "Held þú getur betur enn þetta..";
-			}
-			else
-			{
-				Headline.textContent = "Kemur betur næst.";
-			}
-			var NewBeginning = document.createElement('div');
-			NewBeginning.className = "choice col-xs-12";
-			NewBeginning.id = "NewGame";
-			var NewGame = document.createTextNode("Do you want to Start Over?");
-			NewBeginning.appendChild(NewGame);
-			var position = document.getElementById('choices');
-			position.appendChild(NewBeginning);
-			var start = document.getElementById('NewGame');
-			start.addEventListener('click', StartOver, false);
+	if((Counter + 1) == Quizzes.length) {
+		for (var i = 0; i < Quizzes[Counter].choices.length; i++) {
+		var thischoice = document.getElementById("choice" + i);
+		var thischoiceparent = thischoice.parentNode;
+		thischoiceparent.removeChild(thischoice);
 		}
-		else {
-			for (var i = 0; i < Quizzes[Counter].choices.length; i++) {
-			var thischoice = document.getElementById("choice" + i);
-			var thischoiceparent = thischoice.parentNode;
-			thischoiceparent.removeChild(thischoice);
-			}
-			Counter += 1;
-			init()
+		var Headline = document.getElementById('question');
+		if(PlayerScore == (Counter + 1)){
+			Headline.textContent = "Vel gert! svaraðir öllu réttu!";
 		}
-
+		else if(PlayerScore	== 0)
+		{
+			Headline.textContent = "Held þú getur betur enn þetta..";
+		}
+		else
+		{
+			Headline.textContent = "Kemur betur næst.";
+		}
+		var NewBeginning = document.createElement('div');
+		NewBeginning.className = "choice col-xs-12";
+		NewBeginning.id = "NewGame";
+		var NewGame = document.createTextNode("Do you want to Start Over?");
+		NewBeginning.appendChild(NewGame);
+		var position = document.getElementById('choices');
+		position.appendChild(NewBeginning);
+		var start = document.getElementById('NewGame');
+		start.addEventListener('click', StartOver, false);
 	}
-	else
-	{
-		window.alert("Vinsamlegast svaraðu spurningunni");
+	else {
+		for (var i = 0; i < Quizzes[Counter].choices.length; i++) {
+		var thischoice = document.getElementById("choice" + i);
+		var thischoiceparent = thischoice.parentNode;
+		thischoiceparent.removeChild(thischoice);
+		}
+		Counter += 1;
+		init()
 	}
 }
 
