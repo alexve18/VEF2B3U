@@ -65,14 +65,13 @@ function LoadNumberOfQuestions(number) {
 
 function LoadScoreBoard(number) {
 	var PrintScore = document.getElementById('Score');
-	PrintScore.textContent = "Stig:" + PlayerScore + "/" + (number + 1);
+	PrintScore.textContent = "Stig:" + PlayerScore;
 }
 
 function CheckAnswer(e) {
 	var target, correct;
- 	
 	target = e.target;
-	if (target.id != "choices") {
+	if (target.id != "choices" && target.id != "NewGame") {
 		if (target.textContent === Quizzes[Counter].choices[Quizzes[Counter].correctAnswer]) {
 		target.className += " correct";
 		if(guessed == false) {
@@ -116,6 +115,15 @@ function NextQuestion(e) {
 			{
 				Headline.textContent = "Kemur betur næst.";
 			}
+			var NewBeginning = document.createElement('div');
+			NewBeginning.className = "choice col-xs-12";
+			NewBeginning.id = "NewGame";
+			var NewGame = document.createTextNode("Do you want to Start Over?");
+			NewBeginning.appendChild(NewGame);
+			var position = document.getElementById('choices');
+			position.appendChild(NewBeginning);
+			var start = document.getElementById('NewGame');
+			start.addEventListener('click', StartOver, false);
 		}
 		else {
 			for (var i = 0; i < Quizzes[Counter].choices.length; i++) {
@@ -124,9 +132,9 @@ function NextQuestion(e) {
 			thischoiceparent.removeChild(thischoice);
 			}
 			Counter += 1;
-			guessed = false
 			init()
 		}
+
 	}
 	else
 	{
@@ -134,13 +142,23 @@ function NextQuestion(e) {
 	}
 }
 
+function StartOver() {
+	var startover = document.getElementById("NewGame");
+	var thischoiceparent = startover.parentNode;
+	thischoiceparent.removeChild(startover);
+	PlayerScore = 0;
+	Counter = 0;
+	shuffle(Quizzes);
+	init()
+}
+
 function init() {
 	LoadQuestion(Counter);
 	LoadNumberOfQuestions(Counter);
 	LoadScoreBoard(Counter);
-	// Set up event listeners to call itemDone() on click
-	var el = document.getElementById('choices');     	  // Get shopping list
-	el.addEventListener('click', CheckAnswer, false);        // Add listener on click
+	guessed = false;
+	var el = document.getElementById('choices');
+	el.addEventListener('click', CheckAnswer, false);
 }
 
 init();
